@@ -1,0 +1,11 @@
+C:\Users\Pedro\Documents\quiz\quiz-backend\quiz-backend\bin\Debug\netcoreapp2.0\quiz-backend.deps.json
+C:\Users\Pedro\Documents\quiz\quiz-backend\quiz-backend\bin\Debug\netcoreapp2.0\quiz-backend.runtimeconfig.json
+C:\Users\Pedro\Documents\quiz\quiz-backend\quiz-backend\bin\Debug\netcoreapp2.0\quiz-backend.runtimeconfig.dev.json
+C:\Users\Pedro\Documents\quiz\quiz-backend\quiz-backend\bin\Debug\netcoreapp2.0\quiz-backend.dll
+C:\Users\Pedro\Documents\quiz\quiz-backend\quiz-backend\bin\Debug\netcoreapp2.0\quiz-backend.pdb
+C:\Users\Pedro\Documents\quiz\quiz-backend\quiz-backend\obj\Debug\netcoreapp2.0\quiz-backend.csprojResolveAssemblyReference.cache
+C:\Users\Pedro\Documents\quiz\quiz-backend\quiz-backend\obj\Debug\netcoreapp2.0\quiz-backend.csproj.CoreCompileInputs.cache
+C:\Users\Pedro\Documents\quiz\quiz-backend\quiz-backend\obj\Debug\netcoreapp2.0\quiz-backend.AssemblyInfoInputs.cache
+C:\Users\Pedro\Documents\quiz\quiz-backend\quiz-backend\obj\Debug\netcoreapp2.0\quiz-backend.AssemblyInfo.cs
+C:\Users\Pedro\Documents\quiz\quiz-backend\quiz-backend\obj\Debug\netcoreapp2.0\quiz-backend.dll
+C:\Users\Pedro\Documents\quiz\quiz-backend\quiz-backend\obj\Debug\netcoreapp2.0\quiz-backend.pdb
