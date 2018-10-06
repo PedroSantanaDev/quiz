@@ -11,11 +11,31 @@ namespace quiz_backend.Controllers
     [Route("api/Questions")]
     public class QuestionsController : Controller
     {
+
+        readonly QuizContext context;
+        
+        public QuestionsController(QuizContext context)
+        {
+            this.context = context;
+        }
+
+        // GET api/values
+        [HttpGet]
+        public IEnumerable<Models.Question> Get()
+        {
+            return new Models.Question[]
+            {
+                new Models.Question() { Text = "hello" },
+                new Models.Question() { Text = "hi" }
+            };
+        }
+
         // POST api/values
         [HttpPost]
         public void Post([FromBody]Models.Question questiion)
         {
-
+            context.Questions.Add(new Models.Question() { Text = "test" });
+            context.SaveChanges();
         }
     }
 }
