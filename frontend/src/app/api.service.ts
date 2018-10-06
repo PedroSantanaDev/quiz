@@ -12,6 +12,14 @@ export class ApiService{
 
     }
     /**
+     * Get questions list
+     * @param question
+     */
+    getQuestions(){
+       return this.http.get('http://localhost:55654/api/questions');
+    }
+
+    /**
      * Post a questions
      * @param question 
      */
@@ -20,4 +28,6 @@ export class ApiService{
             console.log(res);
         });
     }
+
+    
 }
