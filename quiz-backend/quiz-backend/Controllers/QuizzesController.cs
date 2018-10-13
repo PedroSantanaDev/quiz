@@ -1,4 +1,7 @@
-﻿using System;
+﻿/**
+ *@Author: Pedro Santana
+ */
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,7 +9,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using quiz_backend;
 using quiz_backend.Models;
 
 namespace quiz_backend.Controllers
@@ -22,7 +24,10 @@ namespace quiz_backend.Controllers
             _context = context;
         }
 
-        // GET: api/Quizzes
+        /// <summary>
+        /// Get quiz
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         public IEnumerable<Quiz> GetQuiz()
@@ -32,7 +37,24 @@ namespace quiz_backend.Controllers
             return _context.Quiz.Where(q => q.OwnerId == userId);
         }
 
-        // GET: api/Quizzes/id
+        /// <summary>
+        /// Get all quizzes
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("all")]
+        public IEnumerable<Quiz> GetAllQuizzes()
+        {
+
+            return _context.Quiz;           
+        }
+
+
+
+        /// <summary>
+        /// Gets a quiz
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetQuiz([FromRoute] int id)
         {
@@ -51,7 +73,12 @@ namespace quiz_backend.Controllers
             return Ok(quiz);
         }
 
-        // PUT: api/Quizzes/5
+        /// <summary>
+        /// Put a quiz
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="quiz"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutQuiz([FromRoute] int id, [FromBody] Quiz quiz)
         {
@@ -86,7 +113,11 @@ namespace quiz_backend.Controllers
             return NoContent();
         }
 
-        // POST: api/Quizzes
+        /// <summary>
+        /// Post a quiz
+        /// </summary>
+        /// <param name="quiz"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostQuiz([FromBody] Quiz quiz)
@@ -108,7 +139,11 @@ namespace quiz_backend.Controllers
             return CreatedAtAction("GetQuiz", new { id = quiz.ID }, quiz);
         }
 
-        // DELETE: api/Quizzes/{id}
+        /// <summary>
+        /// Delete a quiz
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteQuiz([FromRoute] int id)
         {

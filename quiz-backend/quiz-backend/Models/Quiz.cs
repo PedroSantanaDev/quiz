@@ -5,6 +5,9 @@
 
 namespace quiz_backend.Models
 {
+    /// <summary>
+    /// Quiz property
+    /// </summary>
     public class Quiz
     {
         public int ID { get; set; }

@@ -10,6 +10,9 @@ using quiz_backend.Models;
 
 namespace quiz_backend
 {
+    /// <summary>
+    /// Quiz context
+    /// </summary>
     public class QuizContext : DbContext
     {
         public QuizContext(DbContextOptions<QuizContext> options) : base(options) { }

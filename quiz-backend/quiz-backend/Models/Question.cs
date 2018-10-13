@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace quiz_backend.Models
 {
+    /// <summary>
+    /// Question property
+    /// </summary>
     public class Question
     {
         public int ID { get; set; }

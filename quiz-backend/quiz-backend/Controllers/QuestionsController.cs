@@ -1,16 +1,18 @@
 ﻿/**
 *@Author: Pedro Santana 
 */
-using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace quiz_backend.Controllers
 {
+    /// <summary>
+    /// Questions controller
+    /// </summary>
     [Produces("application/json")]
     [Route("api/Questions")]
     public class QuestionsController : Controller
@@ -18,6 +20,10 @@ namespace quiz_backend.Controllers
 
         readonly QuizContext context;
         
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        /// <param name="context"></param>
         public QuestionsController(QuizContext context)
         {
             //Sets the context
@@ -32,7 +38,11 @@ namespace quiz_backend.Controllers
             return context.Questions;
         }
 
-        // GET questions assigned to a quiz
+        /// <summary>
+        /// Get question assigned to quiz
+        /// </summary>
+        /// <param name="quizId"></param>
+        /// <returns></returns>
         [HttpGet("{quizId}")]
         public IEnumerable<Models.Question> Get([FromRoute] int quizId)
         {
@@ -41,7 +51,11 @@ namespace quiz_backend.Controllers
         }
 
 
-        // POST question
+        /// <summary>
+        /// Post question
+        /// </summary>
+        /// <param name="question"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Models.Question question)
         {
@@ -59,7 +73,12 @@ namespace quiz_backend.Controllers
             return Ok(question);
         }
 
-        // PUT question
+        /// <summary>
+        /// Put question
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="question"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody]Models.Question question)
         {

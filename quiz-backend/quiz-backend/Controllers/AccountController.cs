@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/**
+ *@author Pedro Santana
+ */
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
 namespace quiz_backend.Controllers
 {
+    /**
+     * @class Credentials
+     */
     public class Credentials
     {
         public string Email { get; set; }
@@ -25,12 +27,21 @@ namespace quiz_backend.Controllers
         readonly UserManager<IdentityUser> userManager;
         readonly SignInManager<IdentityUser> signInManager;
 
+        /// <summary>
+        /// Account controller constructor
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
-
+        /// <summary>
+        /// Register action
+        /// </summary>
+        /// <param name="credentials"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] Credentials credentials)
         {
@@ -45,7 +56,11 @@ namespace quiz_backend.Controllers
 
             return Ok(CreateToken(user));
         }
-
+        /// <summary>
+        /// Login action
+        /// </summary>
+        /// <param name="credentials"></param>
+        /// <returns></returns>
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Credentials credentials)
         {
@@ -59,7 +74,11 @@ namespace quiz_backend.Controllers
             return Ok(CreateToken(user));
         }
 
-
+        /// <summary>
+        /// Creates token for authentification
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         string CreateToken(IdentityUser user)
         {
             var claims = new Claim[]
