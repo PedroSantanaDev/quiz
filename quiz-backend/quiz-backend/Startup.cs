@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
 namespace quiz_backend
 {
     public class Startup
@@ -33,7 +35,16 @@ namespace quiz_backend
                 .AllowAnyMethod()
                 .AllowAnyHeader();
             }));
+
+            //Adds quiz db context
             services.AddDbContext<QuizContext>(opt => opt.UseInMemoryDatabase("quiz"));
+            
+            //Adds user db context
+            services.AddDbContext<UserDbContext>(opt => opt.UseInMemoryDatabase("user"));
+
+            //Adds identity
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDbContext>();
+
             services.AddMvc();
         }
 

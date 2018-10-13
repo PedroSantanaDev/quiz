@@ -97,7 +97,7 @@ namespace quiz_backend.Controllers
             return CreatedAtAction("GetQuiz", new { id = quiz.ID }, quiz);
         }
 
-        // DELETE: api/Quizzes/5
+        // DELETE: api/Quizzes/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteQuiz([FromRoute] int id)
         {
@@ -107,6 +107,7 @@ namespace quiz_backend.Controllers
             }
 
             var quiz = await _context.Quiz.SingleOrDefaultAsync(m => m.ID == id);
+
             if (quiz == null)
             {
                 return NotFound();
