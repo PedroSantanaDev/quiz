@@ -11,6 +11,7 @@ Quiz app built with Angular for front-end and C# for back-end.
 - Create, delete, update quizzes
 - Add questions to a quiz
 - Edit questions
+- Delete questions
 - User registration
 
 ## License
