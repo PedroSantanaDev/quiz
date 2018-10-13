@@ -1,13 +1,11 @@
 /**
- * @author Pedro Santana
- * Api service
+ *@author Pedro Santana
+ *@class ApiService
  */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
-
-const api_url = `http://localhost:55654/api/questions/`;
 
 @Injectable()
 export class ApiService{
@@ -25,7 +23,7 @@ export class ApiService{
 
     }
     /**
-     * Get questions list
+     * Get quiz questions list
      */
     getQuestions(quizId){
        return this.http.get(`http://localhost:55654/api/questions/${quizId}`);
@@ -33,6 +31,11 @@ export class ApiService{
 
     getQuizzes(){
         return this.http.get('http://localhost:55654/api/quizzes');
+    }
+
+    //Get all available quizzes
+    getAllQuizzes(){
+        return this.http.get('http://localhost:55654/api/quizzes/all');
     }
 
     /**
@@ -75,12 +78,18 @@ export class ApiService{
         });
     }
 
-
+    /**
+     * Select a question
+     * @param question Question selected
+     */
     selectQuestion(question){
         this.selectedQuestion.next(question);
     }
 
-    
+    /**
+     * Select a quiz
+     * @param quiz Quiz selected
+     */
     selectQuiz(quiz){
         this.selectedQuiz.next(quiz);
     }

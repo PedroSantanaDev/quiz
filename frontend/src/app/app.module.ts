@@ -1,3 +1,7 @@
+/**
+ * @author Pedro Santana
+ */
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -9,7 +13,10 @@ import {
   MatInputModule,
   MatCardModule,
   MatListModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatExpansionModule,
+  MatRadioModule,
+  MatDialogModule
 } from '@angular/material';
 
 
@@ -28,6 +35,10 @@ import { RegisterComponent } from './register.component';
 import { LoginComponent } from './login.component';
 import { AuthService } from './auth.service';
 import { AuthInterceptor } from './auth.interceptor';
+import { PlayComponent } from './play.component';
+import { PlayQuizComponent } from './playQuiz.component';
+import { FinishedComponent } from './finished.Component';
+
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -35,7 +46,9 @@ const routes = [
   { path: 'question/:quizId', component: QuestionComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'quiz', component: QuizComponent }
+  { path: 'quiz', component: QuizComponent },
+  { path: 'play', component: PlayComponent },
+  { path: 'playQuiz/:quizId', component: PlayQuizComponent }
 ]
 
 @NgModule({
@@ -48,7 +61,10 @@ const routes = [
     QuizComponent,
     QuizzesComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    PlayComponent,
+    PlayQuizComponent,
+    FinishedComponent
   ],
   imports: [
     BrowserModule,
@@ -63,13 +79,17 @@ const routes = [
     MatCardModule,
     MatListModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatRadioModule,
+    MatDialogModule
   ],
   providers: [ApiService, AuthService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true 
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [FinishedComponent]
 })
 export class AppModule { }

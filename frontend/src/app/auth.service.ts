@@ -1,12 +1,11 @@
 /**
  * @author Pedro Santana
- * Auth service
+ * @class AuthService
  */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-const api_url = `http://localhost:55654/api/questions/`;
 
 @Injectable()
 export class AuthService{

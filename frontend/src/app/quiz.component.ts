@@ -1,3 +1,7 @@
+/**
+ * @author Pedro Santana
+ * @class  QuizComponent
+ */
 import { Component} from '@angular/core'
 import { ApiService } from './api.service';
 
@@ -15,5 +19,4 @@ export class QuizComponent{
     ngOnInit(){
         this.api.quizSelected.subscribe(quiz => this.quiz = quiz);
     }
-
 }

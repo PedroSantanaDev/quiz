@@ -1,6 +1,6 @@
 /**
  * @author Pedro Santana
- * Auth interceptor service
+ * @class AuthInterceptor
  */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpInterceptor } from '@angular/common/http';

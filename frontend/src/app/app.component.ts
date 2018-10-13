@@ -1,3 +1,6 @@
+/**
+ * @author Pedro Santana
+ */
 import { Component } from '@angular/core';
 
 

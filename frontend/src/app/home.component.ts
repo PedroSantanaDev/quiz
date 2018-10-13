@@ -1,3 +1,7 @@
+/**
+ * @author Pedro Santana
+ * @class HomeComponent
+ */
 import { Component } from '@angular/core';
 
 @Component({

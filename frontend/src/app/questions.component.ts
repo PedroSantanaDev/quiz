@@ -1,3 +1,7 @@
+/**
+ * @author Pedro Santana
+ * @class QuestionsComponent
+ */
 import { Component} from '@angular/core'
 import { ApiService } from './api.service';
 import { ActivatedRoute } from '@angular/router';
