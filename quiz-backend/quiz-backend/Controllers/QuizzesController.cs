@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,13 +23,16 @@ namespace quiz_backend.Controllers
         }
 
         // GET: api/Quizzes
+        [Authorize]
         [HttpGet]
         public IEnumerable<Quiz> GetQuiz()
         {
-            return _context.Quiz;
+            var userId = HttpContext.User.Claims.First().Value;
+
+            return _context.Quiz.Where(q => q.OwnerId == userId);
         }
 
-        // GET: api/Quizzes/5
+        // GET: api/Quizzes/id
         [HttpGet("{id}")]
         public async Task<IActionResult> GetQuiz([FromRoute] int id)
         {
@@ -83,6 +87,7 @@ namespace quiz_backend.Controllers
         }
 
         // POST: api/Quizzes
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostQuiz([FromBody] Quiz quiz)
         {
@@ -90,6 +95,12 @@ namespace quiz_backend.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            //User that is posting the quiz
+            var userId = HttpContext.User.Claims.First().Value;
+
+            //Sets the owner of the quiz
+            quiz.OwnerId = userId;
 
             _context.Quiz.Add(quiz);
             await _context.SaveChangesAsync();
